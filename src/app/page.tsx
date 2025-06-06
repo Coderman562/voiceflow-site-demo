@@ -27,7 +27,7 @@ export default function Home() {
         onLoad={() => {
           // @ts-ignore
           window.voiceflow.chat.load({
-            verify: { projectID: "683fa1b188e6cd4b05955947" },
+            verify: { projectID: "68422eb698a6e77c1346896b" },
             url: "https://general-runtime.voiceflow.com",
             versionID: "production",
             voice: { url: "https://runtime-api.voiceflow.com" },
