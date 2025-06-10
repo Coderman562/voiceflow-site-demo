@@ -26,12 +26,35 @@ export default function Home() {
         strategy="afterInteractive"
         onLoad={() => {
           // @ts-ignore
-          window.voiceflow.chat.load({
-            verify: { projectID: "68422eb698a6e77c1346896b" },
-            url: "https://general-runtime.voiceflow.com",
-            versionID: "production",
-            voice: { url: "https://runtime-api.voiceflow.com" },
-          });
+          window.voiceflow.chat
+            .load({
+              verify: { projectID: "68422eb698a6e77c1346896b" },
+              url: "https://general-runtime.voiceflow.com",
+              versionID: "production",
+              voice: { url: "https://runtime-api.voiceflow.com" },
+            })
+            .then(() => {
+              //   @ts-ignore
+              window.voiceflow.chat.proactive.clear(); // clear all previous messages
+              setTimeout(() => {
+                // @ts-ignore
+                window.voiceflow.chat.proactive.push({
+                  type: "text",
+                  payload: {
+                    message: "Got questions about Bingo? 🎱❓",
+                  },
+                });
+              }, 1000);
+              setTimeout(() => {
+                // @ts-ignore
+                window.voiceflow.chat.proactive.push({
+                  type: "text",
+                  payload: {
+                    message: "Ask us anything — we're here to help! 💬🤝",
+                  },
+                });
+              }, 2000);
+            });
         }}
       />
     </>
